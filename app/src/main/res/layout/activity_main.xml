@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgColor"
+    tools:context=".MainActivity">
+
+
+    <View
+        android:id="@+id/ellipse_1"
+        android:layout_width="600dp"
+        android:layout_height="600dp"
+        android:background="@drawable/ellipse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="-295dp" />
+
+    <TextView
+        android:id="@+id/welcome_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/commissioner_semibold"
+        android:text="Welcome to\nCollabCraft."
+        android:textColor="@color/white"
+        android:textSize="42sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/please_signin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginTop="14dp"
+        android:fontFamily="@font/commissioner_medium"
+        android:text="Please sign in to your account"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_text" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        android:elevation="400dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/please_signin">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rectangle"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/username_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/commissioner_semibold"
+                android:text="Username"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/username_ET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext"
+                android:drawableLeft="@drawable/person"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="5dp"
+                android:textColorHint="#586B76"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/username_txt"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+            <TextView
+                android:id="@+id/username_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/commissioner"
+                android:text="Username"
+                android:textColor="#586B76"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@id/username_ET"
+                app:layout_constraintTop_toTopOf="@id/username_ET" />
+
+            <View
+                android:id="@+id/line1"
+                android:layout_width="1dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="36dp"
+                android:background="@drawable/line"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/username_ET"
+                app:layout_constraintTop_toTopOf="@id/username_ET"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/password_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/commissioner_semibold"
+                android:text="Password"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/username_ET" />
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/password_ET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext"
+                android:drawableLeft="@drawable/person"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="5dp"
+                android:textColorHint="#586B76"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/password_txt"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+            <TextView
+                android:id="@+id/password_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/commissioner"
+                android:text="Password"
+                android:textColor="#586B76"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@id/password_ET"
+                app:layout_constraintTop_toTopOf="@id/password_ET" />
+
+
+            <View
+                android:id="@+id/line2"
+                android:layout_width="1dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="36dp"
+                android:background="@drawable/line"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/password_ET"
+                app:layout_constraintTop_toTopOf="@id/password_ET"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/vector"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/tickbox"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/password_ET" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/commissioner"
+                android:text="Remember Me"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@id/vector"
+                app:layout_constraintTop_toBottomOf="@id/password_ET" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="5dp"
+                android:fontFamily="@font/commissioner"
+                android:text="Forgot Password"
+                android:textColor="#00E0FF"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/password_ET" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/signin_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button"
+                android:fontFamily="@font/commissioner_semibold"
+                android:text="Sign In"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintTop_toBottomOf="@id/vector"
+                tools:ignore="TouchTargetSizeCheck"
+                tools:layout_editor_absoluteX="25dp" />
+
+            <View
+                android:id="@+id/line3"
+                android:layout_width="100dp"
+                android:layout_height="3dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/line"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/signin_button" />
+
+            <View
+                android:id="@+id/line4"
+                android:layout_width="100dp"
+                android:layout_height="3dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/signin_button" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/commissioner"
+                android:text="or"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                app:layout_constraintEnd_toStartOf="@id/line4"
+                app:layout_constraintStart_toEndOf="@id/line3"
+                app:layout_constraintTop_toBottomOf="@id/signin_button"
+                tools:ignore="TextSizeCheck" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/google_signin_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edittext"
+                android:drawableLeft="@drawable/google_icone"
+                android:fontFamily="@font/commissioner_semibold"
+                android:paddingLeft="20dp"
+                android:text="Sign in with Google Account"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/line4"
+                tools:ignore="TouchTargetSizeCheck"
+                tools:layout_editor_absoluteX="25dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/signup_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="35dp"
+        android:text="Don’t have an account ? Sign Up"
+        android:textAllCaps="false"
+        android:padding="10dp"
+        android:elevation="400dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/commissioner_semibold"
+        android:background="@drawable/rectangle2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/materialCardView"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <View
+        android:id="@+id/line5"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/line"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_button" />
+
+    <TextView
+        android:id="@+id/contactUs_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/commissioner_semibold"
+        android:text="Contact Us"
+        android:textAlignment="center"
+        android:textColor="#CC586B76"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line5" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@drawable/mail"
+        app:layout_constraintEnd_toStartOf="@id/contactUs_txt"
+        app:layout_constraintTop_toBottomOf="@id/line5"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="30dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
