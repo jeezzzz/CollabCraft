@@ -16,7 +16,7 @@
         android:layout_height="600dp"
         android:background="@drawable/ellipse"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.597"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="-295dp" />
@@ -199,7 +199,7 @@
                 app:layout_constraintTop_toBottomOf="@id/password_ET" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/signin_button"
+                android:id="@+id/signInButton"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="20dp"
@@ -221,7 +221,7 @@
                 android:layout_marginTop="25dp"
                 android:background="@drawable/line"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/signin_button" />
+                app:layout_constraintTop_toBottomOf="@id/signInButton" />
 
             <View
                 android:id="@+id/line4"
@@ -231,7 +231,7 @@
                 android:layout_marginTop="25dp"
                 android:background="@drawable/line"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/signin_button" />
+                app:layout_constraintTop_toBottomOf="@id/signInButton" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -243,7 +243,7 @@
                 android:textSize="12dp"
                 app:layout_constraintEnd_toStartOf="@id/line4"
                 app:layout_constraintStart_toEndOf="@id/line3"
-                app:layout_constraintTop_toBottomOf="@id/signin_button"
+                app:layout_constraintTop_toBottomOf="@id/signInButton"
                 tools:ignore="TextSizeCheck" />
 
             <androidx.appcompat.widget.AppCompatButton
