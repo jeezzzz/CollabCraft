@@ -5,4 +5,5 @@
     <color name="bgColor">#1D2A32</color>
     <color name="ellipseColor">#00E0FF</color>
     <color name="cardBg">#314957</color>
+    <color name="vector">#586B76</color>
 </resources>
