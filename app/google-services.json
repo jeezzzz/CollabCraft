@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1078190321983",
+    "firebase_url": "https://login-colabcraft-default-rtdb.firebaseio.com",
+    "project_id": "login-colabcraft",
+    "storage_bucket": "login-colabcraft.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078190321983:android:382c14c2fcaa935ffc238a",
+        "android_client_info": {
+          "package_name": "com.jeezzzz.collabcraft"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078190321983-3kkc3cvr8s88j5jvqu8o5pq76c7ti45q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jeezzzz.collabcraft",
+            "certificate_hash": "ed76eb7bfe0f03ad5f3ab4633ec5ab495cd9d132"
+          }
+        },
+        {
+          "client_id": "1078190321983-b1h2ibjl95n59ap9s1ahci4j5gic42sf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIqe7g68uqZPydhr4-RsJuwdXVXGE26QM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078190321983-b1h2ibjl95n59ap9s1ahci4j5gic42sf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

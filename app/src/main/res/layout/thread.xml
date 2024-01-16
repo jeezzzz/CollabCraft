@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="#1D2A32">
+
+    <ImageView
+        android:id="@+id/dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/account"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/commissioner_semibold"
+        android:text="\@Aryan_Mishra"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:fontFamily="@font/commissioner"
+        android:text="7hr ago"
+        android:textColor="#8E9599"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/username"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="5dp"/>
+
+    <ImageView
+        android:id="@+id/menu"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="25dp"
+        android:src="@drawable/menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/thread"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="5dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/commissioner"
+        android:text="need 2 members in my team for HACKCBS. Interested ones, share ur details(name, year, branch and domain) in the thread."
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="25dp" />
+
+    <ImageView
+        android:id="@+id/heart"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/heart"
+        app:layout_constraintTop_toBottomOf="@id/thread"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="15dp"
+        />
+
+    <TextView
+        android:id="@+id/heartCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2"
+        android:fontFamily="@font/commissioner_semibold"
+        android:textSize="19sp"
+        android:textColor="#B6B6B6"
+        app:layout_constraintStart_toEndOf="@id/heart"
+        app:layout_constraintTop_toBottomOf="@id/thread"
+        android:layout_marginTop="13dp"
+        android:layout_marginStart="5dp"/>
+    <ImageView
+        android:id="@+id/repost"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/repost"
+        app:layout_constraintTop_toBottomOf="@id/thread"
+        app:layout_constraintStart_toEndOf="@id/heart"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="15dp"
+        />
+
+    <TextView
+        android:id="@+id/repostCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4"
+        android:fontFamily="@font/commissioner_semibold"
+        android:textSize="19sp"
+        android:textColor="#B6B6B6"
+        app:layout_constraintStart_toEndOf="@id/repost"
+        app:layout_constraintTop_toBottomOf="@id/thread"
+        android:layout_marginTop="13dp"
+        android:layout_marginStart="5dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/apply_button"
+        android:fontFamily="@font/commissioner_semibold"
+        android:text="Apply"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/repostCount"
+        app:layout_constraintTop_toBottomOf="@id/thread"
+        tools:ignore="TouchTargetSizeCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
