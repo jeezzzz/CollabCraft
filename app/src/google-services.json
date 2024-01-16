@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "892920778462",
+    "project_id": "collab-c13b3",
+    "storage_bucket": "collab-c13b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892920778462:android:275b86c507857e5576fc4f",
+        "android_client_info": {
+          "package_name": "com.jeezzzz.collabcraft"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAL60zHMOKB_eyhcw3pgbmv2OJKwUAnTTo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

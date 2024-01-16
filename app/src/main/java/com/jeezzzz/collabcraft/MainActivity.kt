@@ -2,87 +2,59 @@ package com.jeezzzz.collabcraft
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.AutoCompleteTextView
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var googleSignInClient: GoogleSignInClient
-    private val RC_SIGN_IN = 1
-
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        firebaseAuth = FirebaseAuth.getInstance()
+        var signUp=findViewById<Button>(R.id.signup_button)
 
-        // Configure Google Sign In
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
-
-        findViewById<Button>(R.id.google_signin_button).setOnClickListener {
-            signIn()
+        signUp.setOnClickListener{
+            val intent = Intent(this, Register2::class.java)
+            startActivity(intent)
         }
-    }
 
-    private fun signIn() {
-        val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
-    }
+        FirebaseApp.initializeApp(this)
+        auth = FirebaseAuth.getInstance()
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+        // Login button click listener
+        val loginButton=findViewById<AppCompatButton>(R.id.signInButton)
+        loginButton.setOnClickListener {
+            val emailEditText=findViewById<AutoCompleteTextView>(R.id.username_ET)
+            val email = emailEditText.text.toString()
+            val passwordEditText=findViewById<AutoCompleteTextView>(R.id.password_ET)
+            val password = passwordEditText.text.toString()
 
-        if (requestCode == RC_SIGN_IN) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try {
-                // Google Sign In was successful, authenticate with Firebase
-                val account = task.getResult(ApiException::class.java)
-                firebaseAuthWithGoogle(account)
-            } catch (e: ApiException) {
-                // Google Sign In failed
-                showToast("Google Sign In failed: ${e.message}")
-            }
-        }
-    }
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Login successful
+                        Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
+                        // Navigate to the home screen
 
-    private fun firebaseAuthWithGoogle(account: GoogleSignInAccount) {
-        val credential: AuthCredential = GoogleAuthProvider.getCredential(account.idToken, null)
-        firebaseAuth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success
-                    val intent = Intent(this@MainActivity, SecondActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    // If sign in fails, display a message to the user with the error details
-                    val error = task.exception
-                    if (error != null) {
-                        showToast("Authentication failed: ${error.message}")
                     } else {
-                        showToast("Authentication failed for an unknown reason")
+                        // Login failed
+                        Toast.makeText(this, "Login failed. ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                     }
                 }
-            }
-    }
-
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        }
     }
 }
