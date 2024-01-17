@@ -2,6 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.CollabCraft" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
+<!--        <item name="colorPrimaryDark">@color/ellipseColor</item>-->
          <item name="colorPrimary">@color/ellipseColor</item>
         <item name="colorPrimaryDark">#E600E0FF</item>
         <item name="colorAccent">@color/cardBg</item>
