@@ -6,4 +6,9 @@
     <color name="ellipseColor">#00E0FF</color>
     <color name="cardBg">#314957</color>
     <color name="vector">#586B76</color>
+    <color name="ml_color">#8338EC</color> <!-- Purple color for ML -->
+    <color name="android_color">#FF006E</color> <!-- Red color for Android -->
+    <color name="web_color">#3A86FF</color> <!-- Yellow color for Web -->
+    <color name="arvr_color">#FFBE0B</color> <!-- Yellow color for Web -->
+
 </resources>

@@ -1,5 +1,6 @@
 package com.jeezzzz.collabcraft
 
+import DomainAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,9 +24,10 @@ class AddFragment : Fragment() {
 
         // Code for the domain spinner
         val domainItems = ArrayList<DomainItem>()
-        domainItems.add(DomainItem("ML"))
-        domainItems.add(DomainItem("Android"))
-        domainItems.add(DomainItem("Web Development"))
+        domainItems.add(DomainItem("• ML"))
+        domainItems.add(DomainItem("• Android"))
+        domainItems.add(DomainItem("• WebD"))
+        domainItems.add(DomainItem("• ARVR"))
         // Add more domains as needed
 
         val domainAdapter = DomainAdapter(requireContext(), domainItems)
