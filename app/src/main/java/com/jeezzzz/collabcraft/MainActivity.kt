@@ -51,6 +51,8 @@ class MainActivity : AppCompatActivity() {
                         // Login successful
                         Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
                         // Navigate to the home screen
+                        intent=Intent(this,HomeFragment::class.java)
+                        startActivity(intent)
                     } else {
                         // Login failed
                         Toast.makeText(this, "Login failed. ${task.exception?.message}", Toast.LENGTH_SHORT).show()
