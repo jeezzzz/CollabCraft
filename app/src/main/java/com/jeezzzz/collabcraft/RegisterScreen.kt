@@ -1,5 +1,6 @@
 package com.jeezzzz.collabcraft
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -56,6 +57,8 @@ class RegisterScreen : AppCompatActivity() {
                 .addOnSuccessListener {
                     // Data successfully added to Firestore
                     Toast.makeText(this, "User data added successfully", Toast.LENGTH_SHORT).show()
+                    intent= Intent(this,SecondActivity::class.java)
+                    startActivity(intent)
                 }
                 .addOnFailureListener { e ->
                     // Handle failure

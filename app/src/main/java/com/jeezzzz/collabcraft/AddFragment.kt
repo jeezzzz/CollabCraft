@@ -38,7 +38,7 @@ class AddFragment : Fragment() {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val clickedItem = parent?.getItemAtPosition(position) as DomainItem
                 val domain = clickedItem.domainName
-                Toast.makeText(requireContext(), "Selected domain: $domain", Toast.LENGTH_SHORT).show()
+
                 // Add logic to filter and display posts based on the selected domain
             }
 
