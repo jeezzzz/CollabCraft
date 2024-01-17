@@ -12,44 +12,38 @@ import com.google.firebase.auth.FirebaseAuth
 class Register2 : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register2)
 
-        val log=findViewById<AppCompatButton>(R.id.signup_button)
-        log.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-        val sign=findViewById<AppCompatButton>(R.id.signInButton)
-        sign.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+        var log=findViewById<AppCompatButton>(R.id.signup_button)
+        log.setOnClickListener{
+            intent=Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
         auth = FirebaseAuth.getInstance()
-        var signIn = findViewById<AppCompatButton>(R.id.signInButton)
-        signIn.setOnClickListener {
-            var emailEditText = findViewById<MaterialAutoCompleteTextView>(R.id.username_ET)
-            val email = emailEditText.text.toString()
 
-            val passwordEditText = findViewById<MaterialAutoCompleteTextView>(R.id.password_ET)
+        var registerButton=findViewById<AppCompatButton>(R.id.signInButton)
+        var emailEditText=findViewById<MaterialAutoCompleteTextView>(R.id.username_ET)
+        var passwordEditText=findViewById<MaterialAutoCompleteTextView>(R.id.password_ET)
+        // Registration button click listener
+        registerButton.setOnClickListener {
+            val email = emailEditText.text.toString()
             val password = passwordEditText.text.toString()
 
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Registration successful
+                        Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show()
                         // Navigate to the login activity or home screen
-                        val intent=Intent(this,RegisterScreen::class.java)
+                        intent=Intent(this,RegisterScreen::class.java)
                         startActivity(intent)
                     } else {
                         // Registration failed
-                        Toast.makeText(
-                            this,
-                            "Registration failed. ${task.exception?.message}",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Toast.makeText(this, "Registration failed. ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                     }
                 }
         }
