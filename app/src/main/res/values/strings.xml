@@ -6,6 +6,7 @@
     <string name="dont_have_an_account">Don\'t have an Account? <font color='#E600E0FF'>Sign Up Now!</font></string>
     <string name="already_have_an_account">Already have an Account? <font color='#E600E0FF'>Log In Now!</font></string>
     <string name="name">Name <font color='#FF0000'>*</font></string>
+    <string name="appName">Collab<font color='#00E0FF'>Craft.</font></string>
     <string name="college_email_id">College Email Id <font color='#FF0000'>*</font></string>
     <string name="year">Year <font color='#FF0000'>*</font></string>
     <string name="branch">Branch <font color='#FF0000'>*</font></string>

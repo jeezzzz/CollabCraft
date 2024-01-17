@@ -24,10 +24,10 @@ class SecondActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home->setCurrentFragment(homeFragment)
-                R.id.nav_community->setCurrentFragment(communityFragment)
+//                R.id.nav_community->setCurrentFragment(communityFragment)
                 R.id.nav_add->setCurrentFragment(addFragment)
-                R.id.nav_bell->setCurrentFragment(bellFragment)
-                R.id.nav_email->setCurrentFragment(emailFragment)
+//                R.id.nav_bell->setCurrentFragment(bellFragment)
+                R.id.nav_profile->setCurrentFragment(emailFragment)
             }
             true
         }
