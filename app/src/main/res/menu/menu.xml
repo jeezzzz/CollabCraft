@@ -2,23 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_home"
-        android:title="Home"
+        android:title=" "
         android:icon="@drawable/home_icon"
         />
-    <item
-        android:id="@+id/nav_community"
-        android:title="Community"
-        android:icon="@drawable/web" />
+<!--    <item-->
+<!--        android:id="@+id/nav_community"-->
+<!--        android:title="Community"-->
+<!--        android:icon="@drawable/web" />-->
     <item
         android:id="@+id/nav_add"
         android:icon="@drawable/add"
-        android:title="Add" />
+        android:title=" " />
+<!--    <item-->
+<!--        android:id="@+id/nav_bell"-->
+<!--        android:icon="@drawable/bell"-->
+<!--        android:title="Notifications" />-->
     <item
-        android:id="@+id/nav_bell"
-        android:icon="@drawable/bell"
-        android:title="Notifications" />
-    <item
-        android:id="@+id/nav_email"
-        android:icon="@drawable/email"
-        android:title="Email" />
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/profile"
+        android:title=" " />
 </menu>
