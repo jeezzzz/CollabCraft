@@ -1,7 +1,9 @@
 package com.jeezzzz.collabcraft
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.content.Context
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
@@ -36,10 +38,16 @@ class MainActivity : AppCompatActivity() {
 
         FirebaseApp.initializeApp(this)
         auth = FirebaseAuth.getInstance()
-
         var loginButton=findViewById<AppCompatButton>(R.id.signInButton)
         var emailEditText=findViewById<MaterialAutoCompleteTextView>(R.id.username_ET)
         var passwordEditText=findViewById<MaterialAutoCompleteTextView>(R.id.password_ET)
+
+
+        if (isLoggedIn()) {
+            navigateToHomeScreen()
+        }
+
+        loginButton.setOnClickListener {
 
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString()
@@ -51,13 +59,35 @@ class MainActivity : AppCompatActivity() {
                         // Login successful
                         Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
                         // Navigate to the home screen
-                        intent=Intent(this,SecondActivity::class.java)
+                        intent = Intent(this, SecondActivity::class.java)
                         startActivity(intent)
                     } else {
                         // Login failed
-                        Toast.makeText(this, "Login failed. ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            "Login failed. ${task.exception?.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
+
         }
+        }
+    }
+    private fun isLoggedIn(): Boolean {
+        val prefs: SharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        return prefs.getString("uid", null) != null
+    }
+
+    private fun saveUIDToPrefs() {
+        val prefs: SharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val uid = auth.currentUser?.uid
+        prefs.edit().putString("uid", uid).apply()
+    }
+
+    private fun navigateToHomeScreen() {
+        val intent = Intent(this, SecondActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

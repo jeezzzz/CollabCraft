@@ -46,7 +46,7 @@
             app:layout_constraintTop_toBottomOf="@id/appName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:fontFamily="@font/commissioner_semibold"
             android:layout_marginTop="20dp"
             />
@@ -135,7 +135,7 @@
                    android:fontFamily="@font/commissioner"
                    android:text="need 2 members in my team for HACKCBS. Interested ones, share ur details(name, year, branch and domain) in the thread."
                    android:textColor="@color/white"
-                   android:textSize="12sp"
+                   android:textSize="16sp"
                    app:layout_constraintEnd_toEndOf="@id/guideline"
                    app:layout_constraintHorizontal_bias="0.0"
                    app:layout_constraintStart_toStartOf="parent"
