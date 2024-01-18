@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.google.ai.client.generativeai.type.content
 import com.google.firebase.auth.FirebaseAuth
 //import com.google.firebase.database.Query
 import com.google.firebase.firestore.Query
@@ -61,6 +62,30 @@ class ProfileFragment : Fragment() {
         var userEmail = FirebaseAuth.getInstance().currentUser?.email
 
         val firestore = FirebaseFirestore.getInstance()
+
+        if (userEmail != null) {
+            firestore.collection("users")
+                .document(userEmail)
+                .get()
+                .addOnSuccessListener { documentSnapshot ->
+                    if (documentSnapshot.exists()) {
+                        // User document exists, extract the posts field
+                        val user = documentSnapshot.toObject(Users::class.java)
+                        val posts = user?.posts
+
+                        // Display posts in the UI (replace this with your logic)
+                        displayPosts(posts)
+                    } else {
+                        Log.d("MyApp", "User document does not exist")
+                        // Handle the case where the user document does not exist
+                    }
+                }
+
+                .addOnFailureListener { exception ->
+                    Log.e("MyApp", "Error getting user document", exception)
+                    // Handle the error
+                }
+        }
 
         if (userEmail != null) {
             firestore.collection("users")
@@ -170,4 +195,19 @@ class ProfileFragment : Fragment() {
                     }
                 }
         }
+    private fun displayPosts(posts: List<Post>?) {
+        var cont=view?.findViewById<TextView>(R.id.thread)
+        if (posts != null && posts.isNotEmpty()) {
+            // Iterate through the posts and do something with them
+            for (post in posts) {
+                if (post.content.isNotEmpty()) {
+                    cont?.text=post.content
+                    // You can display posts in your UI, for example, updating a TextView or RecyclerView
+                }
+            }
+        } else {
+            Log.d("MyApp", "No posts available")
+            // Handle the case where there are no posts
+        }
+    }
     }

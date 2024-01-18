@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -42,23 +43,62 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         var userEmail = FirebaseAuth.getInstance().currentUser?.email
+
         val firestore = FirebaseFirestore.getInstance()
 
-        var thr = view.findViewById<TextView>(R.id.username)
+        if (userEmail != null) {
+            firestore.collection("users")
+                .document(userEmail)
+                .get()
+                .addOnSuccessListener { documentSnapshot ->
+                    if (documentSnapshot.exists()) {
+                        // User document exists, extract the posts field
+                        val user = documentSnapshot.toObject(Users::class.java)
+                        val posts = user?.posts
+
+                        // Display posts in the UI (replace this with your logic)
+                        displayPosts(posts)
+                    } else {
+                        Log.d("MyApp", "User document does not exist")
+                        // Handle the case where the user document does not exist
+                    }
+                }
+
+                .addOnFailureListener { exception ->
+                    Log.e("MyApp", "Error getting user document", exception)
+                    // Handle the error
+                }
+        }
+
+        var name=view.findViewById<TextView>(R.id.username)
+        var dom=view.findViewById<AppCompatButton>(R.id.applyBtn)
         if (userEmail != null) {
             firestore.collection("users")
                 .document(userEmail)
                 .get()
                 .addOnSuccessListener { document ->
                     if (document != null && document.exists()) {
-                        // Document exists, extract the name field and update the TextView
+                        // Document exists, extract the branch field and update the Button
                         val userName = document.getString("name")
-                        Log.d("MyApp", "userName from Firestore: $userName")
-                        thr.text = userName // Assuming 'thr' is the correct TextView
-                    } else {
-                        Log.d("MyApp", "Document does not exist or is empty")
-                        Toast.makeText(requireActivity(), "Failed to load user", Toast.LENGTH_SHORT).show()
+                        val domain=document.getString("domain1")
+                        if(domain!=null){
+                            dom.text="$domain"
+                        }
+                        else{
+                            Toast.makeText(requireActivity(), "Failed to load domain", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                        if (userName != null) {
+                            name.text = "$userName"
+                        } else{
+                            Toast.makeText(requireActivity(), "Failed to load username", Toast.LENGTH_SHORT)
+                                .show()
+                        }
                     }
+                }
+                .addOnFailureListener { exception ->
+                    Log.e("MyApp", "Error getting user document", exception)
+                    // Handle the error
                 }
         }
         return view
@@ -83,4 +123,20 @@ class HomeFragment : Fragment() {
                 }
             }
     }
-}
+
+        private fun displayPosts(posts: List<Post>?) {
+            var cont = view?.findViewById<TextView>(R.id.thread)
+            if (posts != null && posts.isNotEmpty()) {
+                // Iterate through the posts and do something with them
+                for (post in posts) {
+                    if (post.content.isNotEmpty()) {
+                        cont?.text = post.content
+                        // You can display posts in your UI, for example, updating a TextView or RecyclerView
+                    }
+                }
+            } else {
+                Log.d("MyApp", "No posts available")
+                // Handle the case where there are no posts
+            }
+        }
+    }
