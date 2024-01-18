@@ -94,19 +94,19 @@ tools:ignore="ContentDescription"
         android:textSize="20sp"
         />
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:textColor="@color/white"
-        android:text="• Android"
-        android:backgroundTint="@color/android_color"
-        android:padding="4dp"
-        android:fontFamily="@font/commissioner_semibold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/coverphoto"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        />
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/android_color"
+                android:fontFamily="@font/commissioner_semibold"
+                android:padding="4dp"
+                android:text="• Android"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/coverphoto"
+                tools:ignore="TouchTargetSizeCheck" />
     <TextView
         android:id="@+id/username"
         android:layout_width="wrap_content"
@@ -119,41 +119,46 @@ tools:ignore="ContentDescription"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="20dp"/>
 
-    <Button
-        android:id="@+id/course"
-        android:layout_width="wrap_content"
-        android:layout_height="44dp"
-        android:text="Bachelor of Technology"
-        android:textColor="@color/white"
-        android:fontFamily="@font/commissioner_semibold"
-        app:layout_constraintTop_toBottomOf="@id/username"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="#314957"/>
-    <Button
-        android:id="@+id/branch"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="CSE(AI)"
-        android:textColor="@color/white"
-        android:fontFamily="@font/commissioner_semibold"
-        app:layout_constraintTop_toBottomOf="@id/course"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="4dp"
-        android:backgroundTint="#314957"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="2nd Year"
-        android:textColor="@color/white"
-        android:fontFamily="@font/commissioner_semibold"
-        app:layout_constraintTop_toBottomOf="@id/course"
-        app:layout_constraintStart_toEndOf="@id/branch"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:backgroundTint="#314957"/>
+            <Button
+                android:id="@+id/course"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#314957"
+                android:fontFamily="@font/commissioner_semibold"
+                android:text="Bachelor of Technology"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/username"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <Button
+                android:id="@+id/branch"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:backgroundTint="#314957"
+                android:fontFamily="@font/commissioner_semibold"
+                android:text="CSE(AI)"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/course"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:backgroundTint="#314957"
+                android:fontFamily="@font/commissioner_semibold"
+                android:text="2nd Year"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toEndOf="@id/branch"
+                app:layout_constraintTop_toBottomOf="@id/course"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <ImageView
                 android:layout_width="wrap_content"
