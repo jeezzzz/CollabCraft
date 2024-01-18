@@ -1,6 +1,7 @@
 package com.jeezzzz.collabcraft
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -44,51 +45,32 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.fragment_profile, container, false)
+        val use = view.findViewById<TextView>(R.id.name)
 
-        // Initialize your views
-        threadTextView = (view?.findViewById(R.id.thread) ?:
-
-        // Retrieve the most recent post from Firestore
-        getMostRecentPost()) as TextView
-
-    }
-
-    private fun getMostRecentPost() {
-        val userEmail = FirebaseAuth.getInstance().currentUser?.email
-
+        var userEmail = FirebaseAuth.getInstance().currentUser?.email
+        val firestore = FirebaseFirestore.getInstance()
         if (userEmail != null) {
-            val firestore = FirebaseFirestore.getInstance()
-
-            // Assuming you have a collection named "posts" containing user posts
-            firestore.collection("posts")
-                .orderBy("timestamp", Query.Direction.DESCENDING)
-                .limit(1)
+            firestore.collection("users")
+                .document(userEmail)
                 .get()
-                .addOnSuccessListener { documents ->
-                    if (!documents.isEmpty) {
-                        // Get the most recent post document
-                        val postDocument = documents.documents[0]
-
-                        // Assuming you have a field named "content" in your post document
-                        val postContent = postDocument.getString("content")
-
-                        // Update the thread TextView with the most recent post content
-                        threadTextView.text = postContent
+                .addOnSuccessListener { document ->
+                    if (document != null && document.exists()) {
+                        // Document exists, extract the name field and update the TextView
+                        val userName = document.getString("name")
+                        Log.d("MyApp", "userName from Firestore: $userName")
+                        use?.text = userName
                     } else {
-                        // Handle the case where there are no posts
-                        threadTextView.text = "No posts available."
+                        Log.d("MyApp", "Document does not exist or is empty")
+                        Toast.makeText(requireActivity(), "Failed to load user", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
-                .addOnFailureListener { exception ->
-                    // Handle failures
-                    Toast.makeText(
-                        requireActivity(),
-                        "Failed to retrieve posts: ${exception.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
         }
+
+        return view
+
     }
 
     companion object {
