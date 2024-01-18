@@ -5,6 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+//import com.google.firebase.database.Query
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.FirebaseFirestore
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,6 +23,10 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class ProfileFragment : Fragment() {
+
+    private lateinit var threadTextView: TextView
+
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -35,6 +45,50 @@ class ProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false)
+
+        // Initialize your views
+        threadTextView = (view?.findViewById(R.id.thread) ?:
+
+        // Retrieve the most recent post from Firestore
+        getMostRecentPost()) as TextView
+
+    }
+
+    private fun getMostRecentPost() {
+        val userEmail = FirebaseAuth.getInstance().currentUser?.email
+
+        if (userEmail != null) {
+            val firestore = FirebaseFirestore.getInstance()
+
+            // Assuming you have a collection named "posts" containing user posts
+            firestore.collection("posts")
+                .orderBy("timestamp", Query.Direction.DESCENDING)
+                .limit(1)
+                .get()
+                .addOnSuccessListener { documents ->
+                    if (!documents.isEmpty) {
+                        // Get the most recent post document
+                        val postDocument = documents.documents[0]
+
+                        // Assuming you have a field named "content" in your post document
+                        val postContent = postDocument.getString("content")
+
+                        // Update the thread TextView with the most recent post content
+                        threadTextView.text = postContent
+                    } else {
+                        // Handle the case where there are no posts
+                        threadTextView.text = "No posts available."
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    // Handle failures
+                    Toast.makeText(
+                        requireActivity(),
+                        "Failed to retrieve posts: ${exception.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+        }
     }
 
     companion object {

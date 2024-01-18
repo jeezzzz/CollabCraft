@@ -11,4 +11,5 @@
     <string name="year">Year <font color='#FF0000'>*</font></string>
     <string name="branch">Branch <font color='#FF0000'>*</font></string>
     <string name="first_domain">First Domain <font color='#FF0000'>*</font></string>
+    <string name="username">Username<font color='#FF0000'>*</font></string>
 </resources>

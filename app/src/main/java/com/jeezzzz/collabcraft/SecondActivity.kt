@@ -1,19 +1,16 @@
 package com.jeezzzz.collabcraft
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class SecondActivity : AppCompatActivity() {
     private val homeFragment = HomeFragment()
-    //private val communityFragment = CommunityFragment()
+    private val communityFragment = CommunityFragment()
     private val addFragment = AddFragment()
-   // private val bellFragment = BellFragment()
+    private val bellFragment = BellFragment()
     private val profileFragment = ProfileFragment()
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)

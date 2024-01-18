@@ -7,5 +7,6 @@ data class Users(
     val branch: String = "",
     val domain1: String = "",
     val domain2: String = "",
-    val domain3: String = ""
+    val domain3: String = "",
+    var posts: ArrayList<Post> = ArrayList()
 )

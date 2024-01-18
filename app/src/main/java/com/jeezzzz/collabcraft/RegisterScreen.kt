@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.auth.User
 
@@ -20,7 +21,6 @@ class RegisterScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_screen)
-
         val editTextName: EditText = findViewById(R.id.nameEt)
         val editTextEmail: EditText = findViewById(R.id.collegeIdEt)
         val editTextYear: EditText = findViewById(R.id.yearIdEt)
@@ -48,22 +48,31 @@ class RegisterScreen : AppCompatActivity() {
 
 // Assuming user inputs are collected in variables like name, email, year, branch, domain1, domain2, domain3
 
-            val user = Users(name, email, year, branch, domain1, domain2, domain3)
+            val user = Users(name, email, year, branch, domain1, domain2, domain3, )
+
+            var userEmail = FirebaseAuth.getInstance().currentUser?.email
 
 // Add user data to Firestore
-            db.collection("users")
-                .document(email) // Using email as the document ID
-                .set(user)
-                .addOnSuccessListener {
-                    // Data successfully added to Firestore
-                    Toast.makeText(this, "User data added successfully", Toast.LENGTH_SHORT).show()
-                    intent= Intent(this,SecondActivity::class.java)
-                    startActivity(intent)
-                }
-                .addOnFailureListener { e ->
-                    // Handle failure
-                    Toast.makeText(this, "Error adding user data: $e", Toast.LENGTH_SHORT).show()
-                }
+            if (userEmail != null) {
+                db.collection("users")
+                    .document(userEmail) // Using email as the document ID
+                    .set(user)
+                    .addOnSuccessListener {
+                        // Data successfully added to Firestore
+                        Toast.makeText(this, "User data added successfully", Toast.LENGTH_SHORT).show()
+                        intent= Intent(this,SecondActivity::class.java)
+
+
+                        startActivity(intent)
+
+                    }
+                    .addOnFailureListener { e ->
+                        // Handle failure
+                        Toast.makeText(this, "Error adding user data: $e", Toast.LENGTH_SHORT).show()
+                    }
+            }
         }
+
+
     }
 }
