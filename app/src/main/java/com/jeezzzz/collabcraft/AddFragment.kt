@@ -1,6 +1,8 @@
 package com.jeezzzz.collabcraft
 
 import DomainAdapter
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -20,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class AddFragment : Fragment() {
 
     private lateinit var editText: EditText
+    private lateinit var sharedPrefs: SharedPreferences
 
 
 
@@ -92,6 +95,7 @@ class AddFragment : Fragment() {
 
         val yourButton = view.findViewById<AppCompatButton>(R.id.postButton)
         yourButton.setOnClickListener {
+
             onPostButtonClick()
         }
         return view
@@ -192,4 +196,7 @@ class AddFragment : Fragment() {
             }
         }
     }
+
+
+
 }
