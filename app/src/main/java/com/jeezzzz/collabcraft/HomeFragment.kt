@@ -1,10 +1,15 @@
 package com.jeezzzz.collabcraft
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +39,29 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        var userEmail = FirebaseAuth.getInstance().currentUser?.email
+        val firestore = FirebaseFirestore.getInstance()
+
+        var thr = view.findViewById<TextView>(R.id.username)
+        if (userEmail != null) {
+            firestore.collection("users")
+                .document(userEmail)
+                .get()
+                .addOnSuccessListener { document ->
+                    if (document != null && document.exists()) {
+                        // Document exists, extract the name field and update the TextView
+                        val userName = document.getString("name")
+                        Log.d("MyApp", "userName from Firestore: $userName")
+                        thr.text = userName // Assuming 'thr' is the correct TextView
+                    } else {
+                        Log.d("MyApp", "Document does not exist or is empty")
+                        Toast.makeText(requireActivity(), "Failed to load user", Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }
+        return view
     }
 
     companion object {

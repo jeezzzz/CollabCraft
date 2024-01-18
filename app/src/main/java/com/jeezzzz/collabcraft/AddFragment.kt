@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
@@ -40,6 +41,8 @@ class AddFragment : Fragment() {
 
         var userEmail = FirebaseAuth.getInstance().currentUser?.email
         val firestore = FirebaseFirestore.getInstance()
+
+
         if (userEmail != null) {
             firestore.collection("users")
                 .document(userEmail)
